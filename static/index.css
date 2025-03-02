@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 10px 0;
+    font-size: 14px
+}
+
+footer img {
+    height: 14px;
+    width: 14px
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+} 
+
+
+header {
+    background-color: #dfdfe0;
+    color: black;
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 30px;
+}
+
+header p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.searchContainer{
+    display: flex;
+    align-self: center;
+}
+
+.searchBar {
+    display: inline-block;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 6px;
+}
+
+.searchBar:focus-within {
+    border-color: orange;
+}
+
+
+#artistInput {
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 15px;
+    width: 450px;
+}
+.cross {
+    opacity: 0.5;
+    cursor: pointer;
+    height: 13px;
+    width: 13px; 
+}
+
+.search {
+    opacity: 0.5;
+    cursor: pointer;
+    height: 17px;
+    width: 17px;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+#loading.hidden {
+    display: none;
+}
+
+#loading {
+    display: flex;
+    align-self: center;
+}
+
+.loadImg{
+    height: 40px;
+    width: 40px;
+}
+
+.resList {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 15px;
+}
+
+.resCard {
+    background-color: #205375;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.resCard img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 3px solid white;
+}
+
+.resCard:hover {
+    background-color: #112B3C;
+}
+.resultNone {
+    display: block;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #a9a9ac;
+}
+
+.artistDetails {
+    align-self: center;
+    padding: 40px 10px;
+    width: 60%;
+    text-align: justify;
+}

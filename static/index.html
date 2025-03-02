@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Search</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <header>
+        <p><b>Artist Search</b></p>
+    </header>
+    <div class="searchContainer">
+        <form class="searchBar">
+            <input type="image" src="/static/search_icon.png" class="icon search" />
+            <input type="text" id="artistInput" placeholder="Please enter an artist name." required>
+            <span> <img class="icon cross" src="/static/clear_icon.png" /> </span>
+        </form>
+    </div>
+    <div id="results" class="resList"></div>
+    <div id="loading" class="hidden">
+        <img class="loadImg" src="/static/loading.gif" alt="Loading..."/>
+    </div>
+    <div id="details" class="artistDetails"></div>
+    <footer>
+        Powered by <img src="/static/artsy_logo.svg"> <a href="https://www.artsy.net">Artsy</span>
+    </footer>
+    <script src="/static/index.js"></script>
+</body>
+</html>
