@@ -1,4 +1,4 @@
-#Arsty Artist Explorer
+# Arsty Artist Explorer
 * Interactive Artist Search App – Built a sleek and responsive web app using Angular, integrating the Artsy API to fetch and display artists as dynamic cards.
 
 * Seamless UX & Cloud Hosting – Designed an intuitive UI with smooth interactions and deployed it on Google Cloud Platform (GCP) for high availability and performance.
