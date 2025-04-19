@@ -1,0 +1,17 @@
+<div class="card">
+    <img 
+      [src]="artwork.thumbnail || 'assets/artsy-logo.svg'" 
+      class="card-img-top" 
+      [alt]="artwork.title"
+      onerror="this.src='assets/artsy-logo.svg'"
+    >
+    <div class="card-body" style="text-align: center; font-size: 13px;">
+      <span>{{ artwork.title }}</span>,
+      <span *ngIf="artwork.date">{{ artwork.date }}</span>
+    </div>
+    <div class="card-footer px-3 m-0 btn-outline-primary"
+      (click)="showCategories.emit(artwork.id)"
+      style="font-size: 15px; border: none; text-align: center; cursor: pointer;">
+        View categories
+    </div>
+  </div>

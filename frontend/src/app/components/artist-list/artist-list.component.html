@@ -1,0 +1,22 @@
+<div *ngIf="artists !== null">
+  <div *ngIf="artists.length > 0" class="container-fluid px-0">
+    <div class="d-flex flex-nowrap overflow-auto pb-3">
+      <div class="d-flex flex-row flex-nowrap gap-2">
+        <div *ngFor="let artist of artists" class="flex-shrink-0" style="width: 180px;">
+          <app-artist-card
+            [artist]="artist"
+            [isSelected]="selectedArtistId === artist.id"
+            (click)="selectArtist(artist.id)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="artists.length === 0" class="alert alert-danger">
+    No results.
+  </div>
+</div>
+
+<div *ngIf="artists === null">
+  </div>

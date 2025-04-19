@@ -1,0 +1,88 @@
+<div *ngIf="artist" class="container mt-4" style="padding: 0px;">
+  <div class="row">
+    <div class="col-6">
+      <button
+        class="btn w-100"
+        [ngClass]="{ 'btn-primary': activeId==='1' }"
+        (click)="handleArtistIdChange()"
+      >
+        Artist Info
+      </button>
+    </div>
+    <div class="col-6">
+      <button
+        class="btn w-100 text-color-primary"
+        [ngClass]="{ 'btn-primary': activeId==='2' }"
+        (click)="handle_ArtworkTabClicked()"
+      >
+        Artworks
+      </button>
+    </div>
+  </div>
+
+  <div class="container mt-4" style="padding: 0px">
+      <div *ngIf="activeId === '1'">
+        <!-- Artist Info content remains the same -->
+        <div *ngIf="isLoading" class="text-center py-4">
+          <div class="spinner-border" role="status"></div>
+        </div>
+        <div *ngIf="!isLoading">
+          <div class="m-0 p-0 d-flex justify-content-center align-items-center">
+            <h4 class="m-0">{{ artist.name }}</h4>
+            <button 
+              class="btn btn-lg px-2 py-0" 
+              (click)="toggleFavorite()"
+              *ngIf="authService.isLoggedIn()"
+              style="border:none;"
+            >
+              <i class="bi" [class.bi-star-fill]="isFavorite$()" 
+              [class.bi-star]="!isFavorite$()"
+              [ngClass]="{ 'text-warning': isFavorite$(), 'text-dark': !isFavorite$() }"></i>
+            </button>
+          </div>
+          
+          <p class="d-flex justify-content-center align-items-center">
+            {{ artist.nationality }}
+            {{ artist.nationality && artist.birthday ? ',' : '' }}
+            {{ artist.birthday }}{{ artist.birthday ? ' - ' : '' }}
+            {{ artist.deathday }}
+          </p>
+          
+          <p *ngIf="artist.biography" style="text-align: justify; white-space: pre-line;">
+            {{ artist.biography | combineBrokenWords}}
+          </p>
+          <div *ngIf="similarArtists.length > 0">
+            <h4>Similar Artists</h4>
+            <app-artist-list [artists]="similarArtists" (artistClicked)="handle_artistLists($event)"/>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="activeId === '2'">
+        <!-- Artworks content remains the same -->
+        <div *ngIf="isLoading" class="text-center py-4">
+          <div class="spinner-border" role="status"></div>
+        </div>
+        <div *ngIf="!isLoading">
+          <div *ngIf="artworks.length === 0" class="alert alert-danger">
+            No artworks.
+          </div>
+          
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+            <div class="col" *ngFor="let artwork of artworks">
+              <app-artwork-card 
+                [artwork]="artwork"
+                (showCategories)="showCategories(artwork.id)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+  
+
+<app-categories-modal 
+  *ngIf="selectedArtworkId" 
+  [artworkId]="selectedArtworkId"
+  (close)="selectedArtworkId = null"
+/>

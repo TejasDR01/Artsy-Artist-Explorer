@@ -1,0 +1,23 @@
+<div class="row mb-4">
+    <div class="offset-md-0">
+      <div class="input-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Please enter an artist name." 
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="search()"
+        >
+        <button 
+          class="btn btn-primary" 
+          type="button" 
+          (click)="search()"
+          [disabled]="!searchTerm.trim()"
+        >
+          Search
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm ms-1"></span>
+        </button>
+        <button class="btn btn-secondary" type="button" (click)="clear()">Clear</button>
+      </div>
+    </div>
+  </div>

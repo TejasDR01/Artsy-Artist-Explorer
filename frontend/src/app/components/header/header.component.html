@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light px-3 h-10">
+  <span style="font-size: 20px;">Artist Search</span>
+  <button class="navbar-toggler d-sm-block d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link btn px-3" routerLink="/" routerLinkActive="active bg-primary text-white" [routerLinkActiveOptions]="{exact: true}">Search</a>
+      </li>
+      <ng-container *ngIf="!authService.isLoggedIn()">
+        <li class="nav-item">
+          <a class="nav-link btn px-3" routerLink="/login" routerLinkActive="active bg-primary text-white">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn px-3" routerLink="/register" routerLinkActive="active bg-primary text-white">Register</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="authService.isLoggedIn()">
+        <li class="nav-item">
+          <a class="nav-link btn px-3" routerLink="/favorites" routerLinkActive="active bg-primary text-white">Favorites</a>
+        </li>
+        <li ngbDropdown class="nav-item dropdown px-1">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" role="button">
+            <img [src]="authService.getCurrentUser()?.profileImageUrl" class="rounded-circle me-1" width="30" height="30" alt="Profile">
+            <span>{{ authService.getCurrentUser()?.fullname }}</span>
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu position-absolute">
+            <button ngbDropdownItem (click)="deleteAccount()" style="color: red;">Delete account</button>
+            <hr class="my-2">
+            <button ngbDropdownItem (click)="Logout()">Log out</button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

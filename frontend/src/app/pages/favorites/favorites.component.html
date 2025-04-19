@@ -1,0 +1,52 @@
+<div class="container my-4 col-md-8">
+  <div *ngIf="isLoading$ | async" class="text-center py-4">
+    <div class="spinner-border" role="status"></div>
+  </div>
+  <div *ngIf="!(isLoading$ | async)">
+  <div *ngIf="favorites$ | async as favorites">
+    <div *ngIf="favorites.length === 0" class="alert alert-danger">
+      No favorite artists.
+    </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+      <div class="col" *ngFor="let favorite of favorites">
+        <div class="card h-100 bg-dark text-white shadow-sm rounded"
+          style="overflow: hidden;font-size: 14px;"
+          [routerLink]="['/artist',favorite.artistId]">
+            <img 
+              [src]="favorite.thumbnail" 
+              class="card-img w-100" 
+              style="filter: blur(6px) brightness(0.45) contrast(1);
+                object-fit: cover; height: 180px;"
+              [alt]="favorite.artistName"
+            >
+          
+          <div class="card-img-overlay d-flex flex-column justify-content-between text-white">
+            <div>
+              <h4>{{ favorite.artistName }}</h4>
+              <p>
+                <span *ngIf="favorite.birthday || favorite.deathday">
+                {{ favorite.birthday }}</span> - <span *ngIf="favorite.deathday">{{ favorite.deathday }}</span>
+              <br />
+              <span class="" *ngIf="favorite.nationality">
+                {{ favorite.nationality }}
+              </span>
+              </p>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center">
+              <p>{{ favorite.addedAt | relativeTime }}</p>
+              <p
+                (click)="removeFavorite(favorite.artistId, $event)"
+                style="cursor: pointer;"
+              >
+                <u>Remove</u>
+            </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

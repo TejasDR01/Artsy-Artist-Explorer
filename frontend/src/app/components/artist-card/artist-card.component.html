@@ -1,0 +1,25 @@
+<div 
+  class="card bg-dark"
+  [ngClass]="{ 'bg-primary': isSelected, 'bg-dark': !isSelected }"
+  style = "cursor: pointer;"
+>
+  <img 
+    [src]="artist.thumbnail" 
+    class="card-img-top"
+    style="height: 200px;"
+    [alt]="artist.name"
+  >
+  <div class="card-body p-3">
+    <h6 class="card-title m-0 p-0">{{ artist.name }}</h6>
+    <button  
+      *ngIf="authService.isLoggedIn()"
+      class="btn-primary btn-sm position-absolute top-0 end-0 m-2" 
+      (click)="toggleFavorite($event)"
+      style="border-radius: 15px; border: none;"
+      [ngClass]="{ 'text-warning': isFavorite$(), 'text-light': !isFavorite$() }"
+    >
+      <i class="bi" [class.bi-star-fill]="isFavorite$()" 
+      [class.bi-star]="!isFavorite$()"></i>
+    </button>
+  </div>
+</div>

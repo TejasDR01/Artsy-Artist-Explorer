@@ -1,0 +1,68 @@
+<div class="row justify-content-center" style="padding: 40px 15px;">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          
+          <form (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                [(ngModel)]="email" 
+                name="email"
+                required
+                email
+                placeholder="Enter email"
+                #emailInput="ngModel"
+                (blur)="emailTouched = true"
+                [ngClass]="{'is-invalid': emailTouched && emailInput.invalid}"
+              >
+              <div *ngIf="emailTouched && emailInput.errors?.['required']" class="text-danger">
+                Email is required.
+              </div>
+              <div *ngIf="emailTouched && emailInput.errors?.['email']" class="text-danger">
+                Email must be valid.
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                [(ngModel)]="password" 
+                name="password"
+                required
+                placeholder="Password"
+                #passwordInput="ngModel"
+                (blur)="passwordTouched = true"
+                (input)="clearbackEndError()"
+              >
+              <div *ngIf="passwordTouched && passwordInput.errors?.['required']" class="text-danger">
+                Password is required.
+              </div>
+              <div *ngIf="backEndError" class="text-danger">
+                Password or email incorrect.
+              </div>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100"
+              [disabled]="!email || !password"
+            >
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+              Log in
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <p>Don't have an account yet? <a routerLink="/register">Register</a></p>
+      </div>
+    </div>
+  </div>

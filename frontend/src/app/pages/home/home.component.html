@@ -1,0 +1,5 @@
+<div class="container my-4 col-md-8">
+  <app-search-form (searchResults)="handleMessage_searchForm($event)"/>
+  <app-artist-list [artists]="artists" (artistClicked)="handleMessage_artistLists($event)"/>
+  <app-artist-details [artist_id]="selected_artist"/>
+</div>

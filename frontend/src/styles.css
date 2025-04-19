@@ -1,0 +1,28 @@
+:root {
+  --bs-primary: #004d90;
+  --bs-dark: #112b3c;
+}
+
+.btn-primary {
+    background-color: #004d90 !important;
+  }
+  
+.btn-dark {
+    background-color: #112b3c !important;
+  }
+  
+.bg-primary {
+    background-color: #004d90 !important;
+  }
+  
+.bg-dark {
+    background-color: #112b3c !important;
+  }
+
+.btn-outline-primary {
+    color: black;
+}
+.btn-outline-primary:hover {
+    background-color: #004d90 !important;
+    color: white;
+}
