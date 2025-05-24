@@ -6,6 +6,7 @@
 * Used NodeJS for the backend to make Api calls and feed data to the front end which is served as static pages.
 
 Hosted Live Link: https://20250416t185315-dot-first-nodejs-3491.uw.r.appspot.com
+
 Link to Android app implementation of frontend: https://github.com/TejasDR01/Artsy-Android-App
 
 Or To Locally run web application install node and all node modules in the package.json and then run "server.js" file. Visit localhost:8080 in your browser.
